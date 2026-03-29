@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}رفع CV{% endblock %}
+{% block content %}
+<h1>رفع وتحليل السيرة الذاتية</h1>
+<p>ارفع ملف PDF أو DOCX لتحليله واكتشاف إن كان مكتوباً بواسطة AI أو بشكل بشري.</p>
+<form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="upload-form">
+    <div class="form-group">
+        <label for="cv_file">اختر الملف (PDF أو DOCX)</label>
+        <input type="file" id="cv_file" name="cv_file" accept=".pdf,.docx,.doc" required class="file-input">
+    </div>
+    <button type="submit" class="btn btn-primary">رفع وتحليل</button>
+</form>
+<p><a href="{{ url_for('dashboard') }}">العودة للوحة التحكم</a></p>
+{% endblock %}

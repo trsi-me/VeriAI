@@ -1,0 +1,14 @@
+# نشر على Render: New → Blueprint → Connect repo → يقرأ هذا الملف.
+# قاعدة SQLite والرفع على القرص الافتراضي تُفقد عند إعادة النشر؛ لبيانات دائمة أضف Persistent Disk من لوحة Render.
+services:
+  - type: web
+    name: veriai
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python ai/train_model.py
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: SECRET_KEY
+        generateValue: true

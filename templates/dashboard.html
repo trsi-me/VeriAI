@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}لوحة التحكم{% endblock %}
+{% block content %}
+<h1>السير الذاتية المحللة</h1>
+<p><a href="{{ url_for('upload') }}" class="btn btn-primary">رفع CV جديد</a></p>
+{% if cvs %}
+<div class="cv-list">
+    {% for cv in cvs %}
+    <div class="cv-item">
+        <div class="cv-info">
+            <strong>{{ cv.filename }}</strong>
+            <span class="cv-date">{{ cv.upload_date[:10] }}</span>
+        </div>
+        <div class="cv-result">
+            {% if cv.result == 'ai' %}
+            <span class="badge badge-ai">مولد بواسطة AI</span>
+            {% elif cv.result == 'human' %}
+            <span class="badge badge-human">بشري</span>
+            {% else %}
+            <span class="badge badge-unknown">غير محدد</span>
+            {% endif %}
+            {% if cv.confidence %}<span class="confidence">{{ cv.confidence }}%</span>{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>لم تقم برفع أي سيرة ذاتية بعد. <a href="{{ url_for('upload') }}">رفع أول CV</a></p>
+{% endif %}
+{% endblock %}

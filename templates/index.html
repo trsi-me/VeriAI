@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}الرئيسية{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>مرحباً بك في VeriAI</h1>
+    <p>تحليل السير الذاتية واكتشاف إن كانت مكتوبة بواسطة الذكاء الاصطناعي أو بشكل بشري.</p>
+    <div class="hero-buttons">
+        <a href="{{ url_for('register') }}" class="btn btn-primary">التسجيل</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary">تسجيل الدخول</a>
+    </div>
+</section>
+{% endblock %}

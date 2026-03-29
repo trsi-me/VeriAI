@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}التسجيل{% endblock %}
+{% block content %}
+<h1>إنشاء حساب جديد</h1>
+<form method="POST" action="{{ url_for('register') }}" class="auth-form">
+    <div class="form-group">
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" required placeholder="أدخل اسمك">
+    </div>
+    <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" required placeholder="example@email.com">
+    </div>
+    <div class="form-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" name="password" required placeholder="6 أحرف على الأقل">
+    </div>
+    <button type="submit" class="btn btn-primary">التسجيل</button>
+</form>
+<p style="margin-top: 20px;">لديك حساب؟ <a href="{{ url_for('login') }}">تسجيل الدخول</a></p>
+{% endblock %}
